@@ -1,0 +1,26 @@
+title Uuden muistiinpanon luonti SPA sovelluksessa
+
+note left of selain:
+Kenttään kirjoitetaan
+muistiinpano "Test" ja
+klikataan "Save"
+end note
+note over selain:
+- Javascript estää lomakkeen tavanomaisen lähettämisen.
+
+- Lomakkeen kentästä "note" otetaan arvo talteen.
+Se asetetaan javascriptissä aikaisemmin määriteltyyn notes taulukkoon
+
+- Notes-taulukon sisällön mukaisesti muistiinpanot
+piirretään uudelleen sivulle.
+
+- Uusin muistiinpano lähetetään
+JSON-mudoossa
+palvelimelle ajax-postissa.
+end note
+selain->palvelin: HTTP POST https://fullstack-exampleapp.herokuapp.com/new_note_spa
+note right of palvelin:
+Palvelin tallentaa lomakkeen
+kentän note omaan notes-taulukkoon.
+end note
+palvelin-->selain: HTTP 201 CREATED {"message":"note created"}
