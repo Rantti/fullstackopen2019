@@ -7,6 +7,12 @@ const Heading = ({title}) => {
     )
 }
 
+const Statistic = ({text, value}) => {
+    return (
+        <p>{text}: {value}</p>
+    )
+}
+
 const App = () => {
   // tallenna napit omaan tilaansa
   const [good, setGood] = useState(0)
@@ -32,12 +38,12 @@ const App = () => {
         <button onClick={onNeutralClick}>neutral</button>
         <button onClick={onBadClick}>bad</button>
         <Heading title="statistics" />
-        <p>good: {good}</p>
-        <p>neutral: {neutral}</p>
-        <p>bad: {bad}</p>
-        <p>all: {good + neutral + bad}</p>
-        <p>average: {(good - bad) / (good + bad + neutral) || 0}</p>
-        <p>positive: {good / (good + bad + neutral) * 100 || 0}%</p>
+        <Statistic text="good" value={good} />
+        <Statistic text="neutral" value={neutral} />
+        <Statistic text="bad" value={bad} />
+        <Statistic text="all" value={good + neutral + bad} />
+        <Statistic text="average" value={(good - bad) / (good + bad + neutral) || 0} />
+        <Statistic text="positive" value={`${good / (good + bad + neutral) * 100 || 0} %`} />
     </div>
   )
 }
