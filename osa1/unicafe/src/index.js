@@ -5,6 +5,10 @@ const Heading = ({ title }) => {
   return <h1>{title}</h1>;
 };
 
+const Button = ({ title, action }) => {
+  return <button onClick={action}>{title}</button>;
+};
+
 const Statistic = ({ text, value }) => {
   return (
     <p>
@@ -61,9 +65,9 @@ const App = () => {
   return (
     <div>
       <Heading title='give feedback' />
-      <button onClick={onGoodClick}>good</button>
-      <button onClick={onNeutralClick}>neutral</button>
-      <button onClick={onBadClick}>bad</button>
+      <Button title='good' action={onGoodClick} />
+      <Button title='neutral' action={onNeutralClick} />
+      <Button title='bad' action={onBadClick} />
       <Heading title='statistics' />
       <Statistics good={good} bad={bad} neutral={neutral} />
     </div>
