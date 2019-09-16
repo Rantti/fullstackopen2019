@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 const App = props => {
   const [selected, setSelected] = useState(0);
   const [points, setPoints] = useState(new Array(6).fill(0));
+  const [topIndex, setTopIndex] = useState(0);
 
   const getRandomAnecdoteIndex = () => {
     const min = 0;
@@ -26,6 +27,8 @@ const App = props => {
   const voteAnecdote = () => {
     const newPoints = [...points];
     newPoints[selected] += 1;
+    const topIndex = newPoints.indexOf(Math.max(...newPoints));
+    setTopIndex(topIndex);
     setPoints(newPoints);
   };
 
@@ -35,10 +38,13 @@ const App = props => {
 
   return (
     <div>
+      <h2>Anecdote of the day</h2>
       <p>{props.anecdotes[selected]}</p>
       <p>Has {points[selected]} votes</p>
       <button onClick={voteAnecdote}>Vote</button>
       <button onClick={nextAnecdote}>Next Anecdote</button>
+      <h2>Anecdote with most votes</h2>
+      <p>{props.anecdotes[topIndex]}</p>
     </div>
   );
 };
