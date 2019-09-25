@@ -1,4 +1,5 @@
 import React from 'react';
+import Weather from './Weather';
 
 function Results({ countries, setSearchString }) {
   if (countries.length >= 10) {
@@ -35,6 +36,7 @@ function Results({ countries, setSearchString }) {
           ))}
         </ul>
         <img src={country.flag} alt='flag' width='auto' height='100px' />
+        <Weather city={country.capital} />
       </div>
     );
   }
